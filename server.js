@@ -30,10 +30,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
-app.get('/', (req, res) => {
-    console.log("Route handler called.")
-    res.send("Hello world.....xxxxxxx!") 
-  })
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
