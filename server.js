@@ -10,7 +10,7 @@ const IPQUALITYSCORE_API_KEY = 'Nwgfa6UlE0FSjAf4rDr3A0UvZdvmtCzR';
 app.use(cors()); 
 
 app.get('/api/vpn-status', async (req, res) => {
-  const userIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  const userIp = (req.headers['x-forwarded-for'] || req.socket.remoteAddress)?.split(',')[0]?.trim();
 
   try {
     const response = await axios.get(`https://ipqualityscore.com/api/json/ip/${IPQUALITYSCORE_API_KEY}/${userIp}`);
