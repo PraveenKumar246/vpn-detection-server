@@ -44,7 +44,7 @@ function verifyToken(req, res, next) {
 }
 
 app.get('/api/vpn-status', verifyToken, async (req, res) => {
-    const userIp = (req.headers['x-forwarded-for'] || req.socket.remoteAddress)?.split(',')[0]?.trim();
+    const userIp = (req.headers['x-forwarded-for'] || req.socket.remoteAddress)?.split(',')[0]?.trim() || (req.headers['x-forwarded-for'] || req.socket.remoteAddress);
 
     try {
         // Request to IPQualityScore API
